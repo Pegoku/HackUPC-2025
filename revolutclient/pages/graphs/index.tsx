@@ -1,9 +1,10 @@
-import { Anchor, AppShell, Burger, Button, Container, Group, Highlight, NavLink, Paper, Text, Title } from "@mantine/core";
+import { Anchor, AppShell, Burger, Button, Checkbox, Container, Group, Highlight, NavLink, Paper, Text, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 import { AreaChart, LineChart } from "@mantine/charts";
 import '@mantine/charts/styles.css';
 import { BarChart } from "recharts";
+import { useState } from "react";
 
 
 const categories =[ 
@@ -33,6 +34,10 @@ interface transaction {
 }
 export default function IndexPage() {
   const [opened, { toggle }] = useDisclosure();
+
+
+  const [enabledCategories, setEnabledCategories] = useState<category[]>([...categories]);
+
 
   const data: transaction[] = [
     {
@@ -316,8 +321,6 @@ const categoryColors: Record<category, string> = {
 const chartData = totalExpensePerMonth
     .map(item => ({
         ...item,
-        Shopping: parseFloat(item.Shopping.toFixed(2)),
-        Luxuries: parseFloat(item.Luxuries.toFixed(2)),
         monthLabel: monthNames[item.month]
     }))
     .sort((a, b) => {
@@ -326,7 +329,7 @@ const chartData = totalExpensePerMonth
     });
 
 const chartSeries = categories
-    .filter(cat => chartData.some(monthData => monthData[cat] > 0)) // Check if category has > 0 value in any month
+    .filter(cat => chartData.some(monthData => monthData[cat] > 0 && enabledCategories.includes(cat))) // Check if category has > 0 value in any month
     .map(cat => ({
         name: cat as string,
         color: categoryColors[cat],
@@ -382,8 +385,30 @@ const chartSeries = categories
                 tickLine="y" // Show tick lines on the y-axis
                 withXAxis
                 withYAxis
-            />
+        />
+        <Group>
+          {categories.map((cat)=>{
+
+            return (
+              <Checkbox 
+              key={cat}
+              label={cat}
+              color={categoryColors[cat]}
+              checked={enabledCategories.includes(cat)}
+              onChange={(event) => {
+                if (event.currentTarget.checked) {
+                  setEnabledCategories((prev) => [...prev, cat]);
+                }
+                else {
+                  setEnabledCategories((prev) => prev.filter((c) => c !== cat));
+                }
+              }}
+              />
+            )
+          })}
+        </Group>
         </Paper>
+        
 
 
       </Container>

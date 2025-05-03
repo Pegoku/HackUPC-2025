@@ -6,7 +6,7 @@ import '@mantine/charts/styles.css';
 
 export default function App({ Component, pageProps }: any) {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="dark">
       <Head>
         <title>Mantine Template</title>
         <meta
