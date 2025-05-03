@@ -23,20 +23,6 @@ async def read_csv(csv: UploadFile):
         "content": content
     }
 
-async def generate_goals(data: dict):
-    """
-    Endpoint to generate goals based on input data.
-    """
-    # Assuming you have a function in utils.gemini to generate goals
-    from utils.gemini import generate_goals
-
-    print("Generating goals...")
-    goals = generate_goals(data)
-
-    return {
-        "status": "success",
-        "goals": goals
-    }
 
 @app.post("/gen-goals")
 
@@ -64,8 +50,6 @@ async def create_goal(goal_data: dict):
     """
     Endpoint to create a new goal.
     """
-    # Assuming you have a function in utils.gemini to handle goal creation
-    from utils.gemini import create_goal
 
     print("Creating a new goal...")
     created_goal = create_goal(goal_data)
