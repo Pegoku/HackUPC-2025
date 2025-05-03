@@ -21,7 +21,7 @@ def sort_info(data : list):
     for j in range(1, 13):
         temp_list = []
         for i in data:
-            i[0] = int(i[0])
+            i[0] = int(1)
             i[2] = float(i[2])
             i[3] = float(i[3])
             i[4] = float(i[4])

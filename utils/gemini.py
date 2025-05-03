@@ -13,7 +13,7 @@ def extract_response(file):
     client = genai.Client(api_key=api_key_env)
 
     # filepath = pathlib.Path(filepath)
-    prompt = "You recieved a CSV from Revolut. Want you to split it in months, and give the most spent places from more to less, and give the amount spent. Also value from 0~1 the necessity of it; you should consider: amount, frequency, items (general idea of what it could have bought), etc. Should also add an Alert column, should be 0~1 and should ~0 if it looks normal/stable, ~1 if it seems to have spiked (compared to other months) for no reason. Output be in CSV format, columns being: Month(2 digits),Place(What was the charge for),Amount(int),Necessity(0~1),Alert(0~1),Category(Groceries, Dining, Transport, Shopping, Clothing, Utilities, Health, Entertainment, Travel, Home, Betting, Education, Luxuries, Investment). **ONLY OUTPUT THE CSV, NO MORE TEXT**"
+    prompt = "You recieved a CSV from Revolut. Want you to split it in months, and give the most spent places from more to less, and give the amount spent. Also value from 0~1 the necessity of it; you should consider: amount, frequency, items (general idea of what it could have bought), etc. Should also add an Alert column, should be 0~1 and should ~0 if it looks normal/stable, ~1 if it seems to have spiked (compared to other months) for no reason. Output be in CSV format, columns being: Month(should be always 1),Place(What was the charge for),Amount(int),Necessity(0~1),Alert(0~1),Category(Groceries, Dining, Transport, Shopping, Clothing, Utilities, Health, Entertainment, Travel, Home, Betting, Education, Luxuries, Investment). **ONLY OUTPUT THE CSV, NO MORE TEXT**"
 
     response = client.models.generate_content(
         model="gemini-2.0-flash",
