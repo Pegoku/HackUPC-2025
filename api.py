@@ -40,10 +40,10 @@ async def read_csv(csv: UploadFile):
     stats_df = pd.DataFrame(stats)
     stats_df.columns = [
         "commerce",
+        "category",
         "frequency",
         "avg_amount",
         "total_amount",
-        "category",
     ]
     commerce_necesity_df = commerce_necesity_df.merge(
         stats_df, on="commerce", how="inner"
@@ -58,6 +58,7 @@ async def read_csv(csv: UploadFile):
         "content": commerce_necesity_df.to_dict(orient="records"),
     }
 
+
 @app.post("/gen-goals")
 async def gen_goals_api(csv: UploadFile):
     try:
@@ -65,25 +66,25 @@ async def gen_goals_api(csv: UploadFile):
         print("Processing CSV file with Gemini...")
         goals_json = gen_goals(csv)  # Generate goals
         goals = json.loads(goals_json)  # Parse the JSON string into a Python list
- 
+
         # Call /create-goal for each goal
         async with httpx.AsyncClient() as client:
             for goal in goals:
                 response = await client.post(
                     "http://localhost:8000/create-goal",  # Assuming the server is running locally
-                    json=goal
+                    json=goal,
                 )
                 if response.status_code != 200:
                     raise HTTPException(
                         status_code=response.status_code,
-                        detail=f"Failed to create goal: {response.text}"
+                        detail=f"Failed to create goal: {response.text}",
                     )
 
         return {"message": "Goals created successfully", "goals": goals}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+
 
 @app.get("/info-goals")
 def get_create_goal_form():
@@ -98,10 +99,8 @@ def get_create_goal_form():
         # TBD
     }
 
-    return {
-        "graphics": graphics_data,
-        "business_info": business_info
-    }
+    return {"graphics": graphics_data, "business_info": business_info}
+
 
 @app.post("/create-goal")
 async def create_goal(request: Request):
@@ -120,7 +119,13 @@ async def create_goal(request: Request):
         AI = data.get("AI")
 
         # Validate fields
-        if goal_type is None or goal is None or not goal_text or not affected_site or AI is None:
+        if (
+            goal_type is None
+            or goal is None
+            or not goal_text
+            or not affected_site
+            or AI is None
+        ):
             raise HTTPException(status_code=400, detail="Missing required fields")
 
         if not isinstance(affected_site, list):
@@ -135,4 +140,3 @@ async def create_goal(request: Request):
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
