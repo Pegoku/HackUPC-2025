@@ -1,0 +1,32 @@
+book
+gym 10€ discount
+free coffee voucher
+movie ticket
+discount on groceries
+free e-book
+music streaming subscription for a month
+discount on fitness equipment
+meal delivery discount
+gift card for online shopping
+
+Goals:
+reduce amount of orders on X page
+Spend less on X site
+Save money on subscriptions
+Increase savings on groceries
+Limit dining out expenses
+Reduce impulse (lots of small) purchases
+Spend less on entertainment
+Cut down on transportation costs
+Minimize spending on luxury items
+
+<<<<<<< HEAD
+AI gen goals from CSV
+API: 
+setGoals
+
+=======
+
+API: 
+setGoals
+>>>>>>> 2e92075a95fbea17f9880b75b51e9b4c6e331c11
