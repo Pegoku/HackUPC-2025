@@ -23,7 +23,6 @@ async def read_csv(csv: UploadFile):
     
 
     return {
-        "filename": csv.filename,
         "content": content
     }
 
