@@ -1,0 +1,29 @@
+{
+  "name": "hackupc-2025",
+  "version": "1.0.0",
+  "description": "Our HackUPC 2025 project",
+  "homepage": "https://github.com/Pegoku/HackUPC-2025#readme",
+  "bugs": {
+    "url": "https://github.com/Pegoku/HackUPC-2025/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pegoku/HackUPC-2025.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "fastify": "^5.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
