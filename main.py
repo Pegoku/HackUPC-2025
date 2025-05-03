@@ -3,7 +3,7 @@ from google.genai import types
 import os
 import pathlib
 from dotenv import load_dotenv
-import csv
+import csv, io
 
 load_dotenv()
 
@@ -49,4 +49,11 @@ response.text = "\n".join(response.text.splitlines()[1:])
 with open("geminiOutput.csv", "w") as output_file:
     output_file.write(response.text)
 
-print(response.text)
+stream = io.StringIO(response.text)
+
+reader = csv.reader(stream)
+
+header = next(reader)
+data = list(reader)
+
+
