@@ -1,16 +1,21 @@
 import csv, io
 
+
 #! IMPORTANT: the response must be directly from the API, without a single modification
 def clean_csv(response):
+    print(response)
     cleaned_response_1 = "\n".join(
-        line for line in response.text.splitlines() if '`' not in line)
+        line for line in response.splitlines() if "`" not in line
+    )
     cleaned_response = "\n".join(cleaned_response_1.splitlines()[1:])
     return cleaned_response
+
 
 def csv_to_list(cleaned_response):
     stream = io.StringIO(cleaned_response)
     reader = csv.reader(stream)
-    header = next(reader)  #! NO SE USA
+    # header = next(reader)  #! NO SE USA
+    # print(header)
     data = list(reader)
 
     return data
@@ -39,11 +44,8 @@ def sort_info(data : list):
     return data_sorted
 
 
+
 def parseCSV(response):
     cleaned_response = clean_csv(response)
     data = csv_to_list(cleaned_response)
-    data_sorted = sort_info(data)
-
-    return data_sorted
-
-
+    return data

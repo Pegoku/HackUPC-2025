@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             align-items: center;
             height: 100vh;
         }
+
         form {
             background: #ffffff;
             padding: 20px;
@@ -22,17 +24,21 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         h1 {
             color: #333;
         }
+
         label {
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
         }
+
         input[type="file"] {
             margin-bottom: 15px;
         }
+
         button {
             background-color: #007bff;
             color: white;
@@ -41,11 +47,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <form action="http://localhost:8081/read-csv" method="post" enctype="multipart/form-data">
         <h1>Subir un archivo CSV</h1>
@@ -54,4 +62,5 @@
         <button type="submit">Enviar</button>
     </form>
 </body>
+
 </html>

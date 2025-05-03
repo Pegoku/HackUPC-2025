@@ -6,30 +6,32 @@ from dotenv import load_dotenv
 import pandas as pd
 
 
+
 def extract_response(file):
     load_dotenv()
-    api_key_env = os.getenv('api_key')
+    api_key_env = os.getenv("api_key")
 
     client = genai.Client(api_key=api_key_env)
 
-    # filepath = pathlib.Path(filepath)
-    prompt = "You recieved a CSV from Revolut. Want you to split it in months, and give the most spent places from more to less, and give the amount spent. Also value from 0~1 the necessity of it; you should consider: amount, frequency, items (general idea of what it could have bought), etc. Should also add an Alert column, should be 0~1 and should ~0 if it looks normal/stable, ~1 if it seems to have spiked (compared to other months) for no reason. Output be in CSV format, columns being: Month(should be always 1),Place(What was the charge for),Amount(int),Necessity(0~1),Alert(0~1),Category(Groceries, Dining, Transport, Shopping, Clothing, Utilities, Health, Entertainment, Travel, Home, Betting, Education, Luxuries, Investment). **ONLY OUTPUT THE CSV, NO MORE TEXT**"
+    prompt = "You receive a CSV file of Revolut transactions, including commerce names; for each commerce name calculate frequency (total number of transactions), avg_amount (average transaction amount) and total_amount (sum of all transaction amounts), then assign each commerce name a necessity score between 0 (non-essential) and 1 (essential) based on those metrics; return a CSV with exactly two columns: commerce name and necessity; ONLY OUTPUT THE CSV, WITH NO ADDITIONAL TEXT."
 
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=[
             types.Part.from_bytes(
-              data=file.file.read(),
-              mime_type='text/csv',
+                data=file,
+                mime_type="text/csv",
             ),
-            prompt],
-        config=types.GenerateContentConfig(
-            temperature=0,
-            top_k=1,
-            top_p=0
-        ))
+            prompt,
+        ],
+        config=types.GenerateContentConfig(temperature=0, top_k=1, top_p=0),
+    )
+
+    print("Response received from Gemini API")
+    print(response.text)
 
     return response
+
 
 
 def gen_goals(file):
