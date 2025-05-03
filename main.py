@@ -7,6 +7,18 @@ import csv
 
 load_dotenv()
 
+
+def get_rows_with_value(csv_file, column_index, target_value):
+    matching_rows = []
+    csv_reader = csv.reader(csv_file)
+    for row in csv_reader:
+        if row[column_index] == target_value:
+            matching_rows.append(row)
+
+    return matching_rows
+
+
+# Gemini
 api_key_env = os.getenv('api_key')
 
 client = genai.Client(api_key=api_key_env)
@@ -29,10 +41,10 @@ response = client.models.generate_content(
     ))
 
 # Clean CSV
+response.text = "\n".join(
+    line for line in response.text.splitlines() if '`' not in line)
+response.text = "\n".join(response.text.splitlines()[1:])
 
-
-
-csv_reader = csv.reader()
 
 with open("geminiOutput.csv", "w") as output_file:
     output_file.write(response.text)
