@@ -3,6 +3,7 @@ from google.genai import types
 import os
 import pathlib
 from dotenv import load_dotenv
+import csv
 
 load_dotenv()
 
@@ -26,6 +27,12 @@ response = client.models.generate_content(
         top_k=1,
         top_p=0
     ))
+
+# Clean CSV
+
+
+
+csv_reader = csv.reader()
 
 with open("geminiOutput.csv", "w") as output_file:
     output_file.write(response.text)
