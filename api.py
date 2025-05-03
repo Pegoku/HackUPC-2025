@@ -23,4 +23,54 @@ async def read_csv(csv: UploadFile):
         "content": content
     }
 
-    
+async def generate_goals(data: dict):
+    """
+    Endpoint to generate goals based on input data.
+    """
+    # Assuming you have a function in utils.gemini to generate goals
+    from utils.gemini import generate_goals
+
+    print("Generating goals...")
+    goals = generate_goals(data)
+
+    return {
+        "status": "success",
+        "goals": goals
+    }
+
+@app.post("/gen-goals")
+
+
+@app.get("/info-goals")
+def get_create_goal_form():
+    """
+    Endpoint to provide information for rendering graphics and business info.
+    """
+    graphics_data = {
+        # TBD
+    }
+
+    business_info = {
+        # TBD
+    }
+
+    return {
+        "graphics": graphics_data,
+        "business_info": business_info
+    }
+
+@app.post("/create-goal")
+async def create_goal(goal_data: dict):
+    """
+    Endpoint to create a new goal.
+    """
+    # Assuming you have a function in utils.gemini to handle goal creation
+    from utils.gemini import create_goal
+
+    print("Creating a new goal...")
+    created_goal = create_goal(goal_data)
+
+    return {
+        "status": "success",
+        "goal": created_goal
+    }

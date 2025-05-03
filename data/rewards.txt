@@ -20,6 +20,7 @@ Spend less on entertainment
 Cut down on transportation costs
 Minimize spending on luxury items
 
-
+AI gen goals from CSV
 API: 
 setGoals
+
