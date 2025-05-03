@@ -11,6 +11,9 @@ Goal types:
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
+cursor.execute('''
+DROP TABLE IF EXISTS goals
+''')
 
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS goals (
@@ -24,6 +27,11 @@ CREATE TABLE IF NOT EXISTS goals (
 ''')
 
 conn.commit()
+cursor.execute('SELECT * FROM goals')
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+
 conn.close()
 
 
@@ -32,7 +40,7 @@ def insert_goal(goal_type, goal, goal_text, affected_site, AI):
     cursor = conn.cursor()
     cursor.execute('''
     INSERT INTO goals (goal_type, goal, goal_text, affected_site, AI)
-    VALUES (?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?)
     ''', (goal_type, goal, goal_text, json.dumps(affected_site), AI))
     conn.commit()
     conn.close()
