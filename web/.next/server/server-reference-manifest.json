@@ -1,0 +1,17 @@
+{
+  "node": {
+    "403320f5327dde7de6b6148dbe8ebc16c9b385c449": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fpegoku%2FMedia%2FProjects%2FHackUPC%2FHackUPC-2025%2Fweb%2Fapp%2Factions.ts%22%2C%5B%7B%22id%22%3A%22403320f5327dde7de6b6148dbe8ebc16c9b385c449%22%2C%22exportedName%22%3A%22uploadCSV%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "T9MJsa6xWPLgp1rBZVYT3YhbqHxWfytavmCEyPrL6Jg="
+}

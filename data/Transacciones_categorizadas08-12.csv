@@ -1,0 +1,151 @@
+Type,Product,Started Date,Completed Date,Description,Amount,Currency,State,Balance,Month,Category
+Card payment,Current,2024-08-01,2024-08-02,Cabify,-38.55,EUR,Completed,-9586.85,2024-08,Transport
+Card payment,Current,2024-08-01,2024-08-02,Cabify,-39.5,EUR,Completed,-52730.66,,Transport
+Card payment,Current,2024-08-01,2024-08-02,Booking.com,-22.61,EUR,Completed,-51015.23,,Travel
+Card payment,Current,2024-08-02,2024-08-03,Fnac,-56.81,EUR,Completed,-53427.39,,Shopping
+Card payment,Current,2024-08-02,2024-08-03,Farmacia,-44.84,EUR,Completed,-53184.46,,Health
+Card payment,Current,2024-08-02,2024-08-03,Lidl,-12.31,EUR,Completed,-53858.53,,Groceries
+Card payment,Current,2024-08-02,2024-08-03,Zara,-2.14,EUR,Completed,-49628.6,,Clothing
+Card payment,Current,2024-08-03,2024-08-04,Farmacia,-14.39,EUR,Completed,-49589.33,,Health
+Card payment,Current,2024-08-03,2024-08-04,Cabify,-53.17,EUR,Completed,-54140.57,,Transport
+Card payment,Current,2024-08-03,2024-08-04,Cabify,-29.66,EUR,Completed,-53482.92,,Transport
+Card payment,Current,2024-08-03,2024-08-04,Metro de Madrid,-36.52,EUR,Completed,-53220.98,,Transport
+Card payment,Current,2024-08-04,2024-08-05,Lidl,-23.52,EUR,Completed,-50450.03,,Groceries
+Card payment,Current,2024-08-04,2024-08-05,Dentista,-10.89,EUR,Completed,-51907.16,,Health
+Card payment,Current,2024-08-04,2024-08-05,Uber,-19.41,EUR,Completed,-52253.93,,Transport
+Card payment,Current,2024-08-04,2024-08-05,Fnac,-46.97,EUR,Completed,-52234.52,,Shopping
+Card payment,Current,2024-08-04,2024-08-05,Zara,-38.12,EUR,Completed,-51666.07,,Clothing
+Card payment,Current,2024-08-04,2024-08-05,100 Montaditos,-53.38,EUR,Completed,-50825.4,,Dining
+Card payment,Current,2024-08-04,2024-08-05,Amazon,-19.39,EUR,Completed,-53877.92,,Shopping
+Card payment,Current,2024-08-04,2024-08-05,Mercadona,-56.42,EUR,Completed,-52434.86,,Groceries
+Card payment,Current,2024-08-05,2024-08-06,Zara,-31.52,EUR,Completed,-51409.7,,Clothing
+Card payment,Current,2024-08-05,2024-08-06,Amazon,-47.67,EUR,Completed,-51627.95,,Shopping
+Card payment,Current,2024-08-05,2024-08-06,Mercadona,-13.31,EUR,Completed,-52325.95,,Groceries
+Card payment,Current,2024-08-05,2024-08-06,Netflix,-15.77,EUR,Completed,-51230.7,,Entertainment
+Card payment,Current,2024-08-05,2024-08-06,McDonald's,-54.48,EUR,Completed,-49955.71,,Dining
+Card payment,Current,2024-08-06,2024-08-07,Amazon,-58.71,EUR,Completed,-52312.64,,Shopping
+Card payment,Current,2024-08-06,2024-08-07,Dentista,-7.37,EUR,Completed,-51214.93,,Health
+Card payment,Current,2024-08-06,2024-08-07,Mercadona,-15.61,EUR,Completed,-53370.58,,Groceries
+Card payment,Current,2024-08-06,2024-08-07,Steam,-46.32,EUR,Completed,-53067.86,,Entertainment
+Card payment,Current,2024-08-07,2024-08-08,Farmacia,-53.88,EUR,Completed,-53725.32,,Health
+Card payment,Current,2024-08-07,2024-08-08,Booking.com,-30.17,EUR,Completed,-50100.61,,Travel
+Card payment,Current,2024-08-07,2024-08-08,Farmacia,-48.23,EUR,Completed,-52805.78,,Health
+Card payment,Current,2024-08-07,2024-08-08,Carrefour,-52.88,EUR,Completed,-51896.27,,Groceries
+Card payment,Current,2024-08-07,2024-08-08,Zara,-18.17,EUR,Completed,-51925.33,,Clothing
+Card payment,Current,2024-08-07,2024-08-08,Óptica,-54.88,EUR,Completed,-51070.11,,Health
+Card payment,Current,2024-08-08,2024-08-09,Farmacia,-47.87,EUR,Completed,-51499.1,,Health
+Card payment,Current,2024-08-08,2024-08-09,Óptica,-52.87,EUR,Completed,-9778.37,2024-08,Health
+Card payment,Current,2024-08-08,2024-08-09,Farmacia,-58.48,EUR,Completed,-9515.97,2024-08,Health
+Card payment,Current,2024-08-08,2024-08-09,Airbnb,-17.76,EUR,Completed,-50922.62,,Travel
+Card payment,Current,2024-08-09,2024-08-10,Netflix,-37.59,EUR,Completed,-52843.37,,Entertainment
+Card payment,Current,2024-08-09,2024-08-10,Airbnb,-15.67,EUR,Completed,-51725.09,,Travel
+Card payment,Current,2024-08-09,2024-08-10,Mercadona,-18.86,EUR,Completed,-53139.62,,Groceries
+Card payment,Current,2024-08-09,2024-08-10,100 Montaditos,-3.26,EUR,Completed,-50522.9,,Dining
+Card payment,Current,2024-08-09,2024-08-10,Mercadona,-54.36,EUR,Completed,-51378.18,,Groceries
+Card payment,Current,2024-08-09,2024-08-10,Fnac,-55.65,EUR,Completed,-52125.51,,Shopping
+Card payment,Current,2024-08-10,2024-08-11,Amazon,-46.61,EUR,Completed,-53529.53,,Shopping
+Card payment,Current,2024-08-10,2024-08-11,Cabify,-22.17,EUR,Completed,-50847.57,,Transport
+Card payment,Current,2024-08-10,2024-08-11,Ryanair,-37.71,EUR,Completed,-49993.42,,Travel
+Card payment,Current,2024-08-10,2024-08-11,Carrefour,-33.89,EUR,Completed,-9725.5,2024-08,Groceries
+Card payment,Current,2024-08-10,2024-08-11,Burger King,-53,EUR,Completed,-49769.28,,Dining
+Card payment,Current,2024-08-10,2024-08-11,Farmacia,-19.92,EUR,Completed,-50197.18,,Health
+Card payment,Current,2024-08-11,2024-08-12,Spotify,-12.11,EUR,Completed,-9636.49,2024-08,Entertainment
+Card payment,Current,2024-08-11,2024-08-12,100 Montaditos,-46,EUR,Completed,-51323.82,,Dining
+Card payment,Current,2024-08-11,2024-08-12,Farmacia,-46.23,EUR,Completed,-49674.83,,Health
+Card payment,Current,2024-08-11,2024-08-12,Dentista,-3.83,EUR,Completed,-51451.23,,Health
+Card payment,Current,2024-08-11,2024-08-12,Steam,-33.11,EUR,Completed,-53941.9,,Entertainment
+Card payment,Current,2024-08-11,2024-08-12,Metro de Madrid,-28.09,EUR,Completed,-9614.94,2024-08,Transport
+Card payment,Current,2024-08-11,2024-08-12,Spotify,-48.58,EUR,Completed,-49574.94,,Entertainment
+Card payment,Current,2024-08-11,2024-08-12,Fnac,-11.55,EUR,Completed,-49890.42,,Shopping
+Card payment,Current,2024-08-12,2024-08-13,Cabify,-58.34,EUR,Completed,-52187.55,,Transport
+Card payment,Current,2024-08-12,2024-08-13,McDonald's,-19.04,EUR,Completed,-52908.04,,Dining
+Card payment,Current,2024-08-12,2024-08-13,Zara,-18.42,EUR,Completed,-53846.22,,Clothing
+Card payment,Current,2024-08-12,2024-08-13,Amazon,-19.43,EUR,Completed,-50371.49,,Shopping
+Card payment,Current,2024-08-12,2024-08-13,Airbnb,-34.24,EUR,Completed,-49709.07,,Travel
+Card payment,Current,2024-08-13,2024-08-14,Dentista,-24.76,EUR,Completed,-50070.44,,Health
+Card payment,Current,2024-08-13,2024-08-14,Burger King,-34.86,EUR,Completed,-51811.76,,Dining
+Card payment,Current,2024-08-13,2024-08-14,100 Montaditos,-30.86,EUR,Completed,-54087.4,,Dining
+Card payment,Current,2024-08-13,2024-08-14,Amazon,-44.02,EUR,Completed,-50622.21,,Shopping
+Card payment,Current,2024-08-13,2024-08-14,Booking.com,-58.2,EUR,Completed,-51580.28,,Travel
+Card payment,Current,2024-08-14,2024-08-15,Airbnb,-52.9,EUR,Completed,-53120.76,,Travel
+Card payment,Current,2024-08-14,2024-08-15,Dentista,-9.44,EUR,Completed,-9624.38,2024-08,Health
+Card payment,Current,2024-08-14,2024-08-15,Cabify,-16.44,EUR,Completed,-52747.1,,Transport
+Card payment,Current,2024-08-14,2024-08-15,Metro de Madrid,-33.34,EUR,Completed,-52567.36,,Transport
+Card payment,Current,2024-08-14,2024-08-15,Spotify,-31.1,EUR,Completed,-50402.59,,Entertainment
+Card payment,Current,2024-08-14,2024-08-15,Spotify,-11.69,EUR,Completed,-50230.05,,Entertainment
+Card payment,Current,2024-08-14,2024-08-15,100 Montaditos,-19.46,EUR,Completed,-52512.81,,Dining
+Card payment,Current,2024-08-15,2024-08-16,Mercadona,-15.76,EUR,Completed,-9457.49,2024-08,Groceries
+Card payment,Current,2024-08-15,2024-08-16,Booking.com,-55.12,EUR,Completed,-9691.61,2024-08,Travel
+Card payment,Current,2024-08-15,2024-08-16,Mercadona,-30.87,EUR,Completed,-53908.79,,Groceries
+Card payment,Current,2024-08-15,2024-08-16,Uber,-32.33,EUR,Completed,-9548.3,2024-08,Transport
+Card payment,Current,2024-08-15,2024-08-16,Ryanair,-31.11,EUR,Completed,-50177.26,,Travel
+Card payment,Current,2024-08-15,2024-08-16,Cabify,-44.46,EUR,Completed,-51969.79,,Transport
+Card payment,Current,2024-08-15,2024-08-16,Spotify,-43.35,EUR,Completed,-51709.42,,Entertainment
+Card payment,Current,2024-08-16,2024-08-17,Farmacia,-34.7,EUR,Completed,-53313.61,,Health
+Card payment,Current,2024-08-16,2024-08-17,Uber,-53.49,EUR,Completed,-52675.47,,Transport
+Card payment,Current,2024-08-16,2024-08-17,Dentista,-43.77,EUR,Completed,-53671.44,,Health
+Card payment,Current,2024-08-17,2024-08-18,Dentista,-48.4,EUR,Completed,-50298.82,,Health
+Card payment,Current,2024-08-17,2024-08-18,Booking.com,-52.26,EUR,Completed,-50045.68,,Travel
+Card payment,Current,2024-08-17,2024-08-18,Carrefour,-47.32,EUR,Completed,-49835.97,,Groceries
+Card payment,Current,2024-08-17,2024-08-18,Spotify,-45.63,EUR,Completed,-52889,,Entertainment
+Card payment,Current,2024-08-17,2024-08-18,Zara,-15.69,EUR,Completed,-52691.16,,Clothing
+Card payment,Current,2024-08-17,2024-08-18,Booking.com,-57.97,EUR,Completed,-50772.02,,Travel
+Card payment,Current,2024-08-17,2024-08-18,Dentista,-7.74,EUR,Completed,-52520.55,,Health
+Card payment,Current,2024-08-17,2024-08-18,Spotify,-37.7,EUR,Completed,-51447.4,,Entertainment
+Card payment,Current,2024-08-18,2024-08-19,Óptica,-38.44,EUR,Completed,-50961.06,,Health
+Card payment,Current,2024-08-18,2024-08-19,100 Montaditos,-9.5,EUR,Completed,-53734.82,,Dining
+Card payment,Current,2024-08-19,2024-08-20,Metro de Madrid,-10.29,EUR,Completed,-50632.5,,Transport
+Card payment,Current,2024-08-19,2024-08-20,Amazon,-31.13,EUR,Completed,-52621.98,,Shopping
+Card payment,Current,2024-08-19,2024-08-20,Mercadona,-58.83,EUR,Completed,-52028.62,,Groceries
+Card payment,Current,2024-08-19,2024-08-20,McDonald's,-39.87,EUR,Completed,-53569.4,,Dining
+Card payment,Current,2024-08-19,2024-08-20,100 Montaditos,-21.18,EUR,Completed,-50218.36,,Dining
+Card payment,Current,2024-08-19,2024-08-20,Zara,-59.81,EUR,Completed,-50519.64,,Clothing
+Card payment,Current,2024-08-19,2024-08-20,Booking.com,-3.77,EUR,Completed,-50233.82,,Travel
+Card payment,Current,2024-08-19,2024-08-20,Netflix,-23.87,EUR,Completed,-50904.86,,Entertainment
+Card payment,Current,2024-08-19,2024-08-20,Booking.com,-38.12,EUR,Completed,-50670.62,,Travel
+Card payment,Current,2024-08-19,2024-08-20,Mercadona,-16.78,EUR,Completed,-51522.08,,Groceries
+Card payment,Current,2024-08-19,2024-08-20,Mercadona,-36.2,EUR,Completed,-53771.02,,Groceries
+Card payment,Current,2024-08-19,2024-08-20,Booking.com,-12.22,EUR,Completed,-53954.12,,Travel
+Card payment,Current,2024-08-20,2024-08-21,Netflix,-3.7,EUR,Completed,-52129.21,,Entertainment
+Card payment,Current,2024-08-20,2024-08-21,Uber,-39.82,EUR,Completed,-52976.66,,Transport
+Card payment,Current,2024-08-20,2024-08-21,Airbnb,-49.28,EUR,Completed,-51119.39,,Travel
+Card payment,Current,2024-08-20,2024-08-21,Metro de Madrid,-9.8,EUR,Completed,-50459.83,,Transport
+Card payment,Current,2024-08-20,2024-08-21,McDonald's,-23.2,EUR,Completed,-9801.57,2024-08,Dining
+Card payment,Current,2024-08-21,2024-08-22,Fnac,-58.49,EUR,Completed,-52493.35,,Shopping
+Card payment,Current,2024-08-21,2024-08-22,Amazon,-7.21,EUR,Completed,-49716.28,,Shopping
+Card payment,Current,2024-08-21,2024-08-22,Amazon,-45.54,EUR,Completed,-50146.15,,Shopping
+Card payment,Current,2024-08-21,2024-08-22,Airbnb,-44.88,EUR,Completed,-53021.54,,Travel
+Card payment,Current,2024-08-21,2024-08-22,Mercadona,-56.78,EUR,Completed,-53827.8,,Groceries
+Card payment,Current,2024-08-22,2024-08-23,Burger King,-31.56,EUR,Completed,-50992.62,,Dining
+Card payment,Current,2024-08-22,2024-08-23,Spotify,-58.27,EUR,Completed,-53627.67,,Entertainment
+Card payment,Current,2024-08-22,2024-08-23,Fnac,-37.13,EUR,Completed,-49626.46,,Shopping
+Card payment,Current,2024-08-22,2024-08-23,McDonald's,-23.28,EUR,Completed,-49859.25,,Dining
+Card payment,Current,2024-08-22,2024-08-23,Airbnb,-13.47,EUR,Completed,-52534.02,,Travel
+Card payment,Current,2024-08-23,2024-08-24,Uber,-33.42,EUR,Completed,-50880.99,,Transport
+Card payment,Current,2024-08-23,2024-08-24,Amazon,-25.87,EUR,Completed,-53453.26,,Shopping
+Card payment,Current,2024-08-23,2024-08-24,Uber,-42.71,EUR,Completed,-51162.1,,Transport
+Card payment,Current,2024-08-23,2024-08-24,Mercadona,-10.81,EUR,Completed,-49901.23,,Groceries
+Card payment,Current,2024-08-23,2024-08-24,100 Montaditos,-28.8,EUR,Completed,-52936.84,,Dining
+Card payment,Current,2024-08-23,2024-08-24,Farmacia,-31.63,EUR,Completed,-51843.39,,Health
+Card payment,Current,2024-08-23,2024-08-24,Steam,-2.49,EUR,Completed,-52569.85,,Entertainment
+Card payment,Current,2024-08-23,2024-08-24,Carrefour,-16.6,EUR,Completed,-50250.42,,Groceries
+Card payment,Current,2024-08-23,2024-08-24,Farmacia,-19.37,EUR,Completed,-49788.65,,Health
+Card payment,Current,2024-08-23,2024-08-24,Burger King,-42.38,EUR,Completed,-54056.54,,Dining
+Card payment,Current,2024-08-23,2024-08-24,Óptica,-6.2,EUR,Completed,-51505.3,,Health
+Card payment,Current,2024-08-24,2024-08-25,Metro de Madrid,-32.3,EUR,Completed,-52358.25,,Transport
+Card payment,Current,2024-08-24,2024-08-25,Ryanair,-57.93,EUR,Completed,-53278.91,,Travel
+Card payment,Current,2024-08-24,2024-08-25,Ryanair,-41.24,EUR,Completed,-52069.86,,Travel
+Card payment,Current,2024-08-24,2024-08-25,Airbnb,-43.32,EUR,Completed,-54014.16,,Travel
+Card payment,Current,2024-08-25,2024-08-26,McDonald's,-16.72,EUR,Completed,-53970.84,,Dining
+Card payment,Current,2024-08-25,2024-08-26,Cabify,-51.81,EUR,Completed,-51776.9,,Transport
+Card payment,Current,2024-08-25,2024-08-26,Uber,-23.92,EUR,Completed,-50426.51,,Transport
+Card payment,Current,2024-08-25,2024-08-26,Dentista,-47.12,EUR,Completed,-51277.82,,Health
+Card payment,Current,2024-08-25,2024-08-26,Netflix,-41.36,EUR,Completed,-53354.97,,Entertainment
+Card payment,Current,2024-08-25,2024-08-26,Cabify,-45.46,EUR,Completed,-51207.56,,Transport
+Card payment,Current,2024-08-26,2024-08-27,Óptica,-19.62,EUR,Completed,-49878.87,,Health
+Card payment,Current,2024-08-26,2024-08-27,Steam,-21,EUR,Completed,-52590.85,,Entertainment
+Card payment,Current,2024-08-26,2024-08-27,Dentista,-10.45,EUR,Completed,-52757.55,,Health
+Card payment,Current,2024-08-27,2024-08-28,Ryanair,-55.29,EUR,Completed,-50578.19,,Travel
+Card payment,Current,2024-08-28,2024-08-29,Uber,-20.19,EUR,Completed,-52378.44,,Transport
+Card payment,Current,2024-08-28,2024-08-29,Uber,-53.24,EUR,Completed,-50352.06,,Transport
+Card payment,Current,2024-08-28,2024-08-29,Carrefour,-43.43,EUR,Completed,-50714.05,,Groceries
