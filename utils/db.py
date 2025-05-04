@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import aiosqlite
 
 """
 Goal types:
@@ -144,8 +145,9 @@ def add_categories_to_db(data, month, year):
     conn.close()
 
 
-def get_categories():
+def get_categories_db():
     conn = sqlite3.connect("database.db")
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM categories")
     rows = cursor.fetchall()
@@ -158,6 +160,7 @@ def get_commerce():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM commerce")
     rows = cursor.fetchall()
+
     conn.close()
     return rows
 

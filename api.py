@@ -6,7 +6,7 @@ from utils.db import (
     insert_goal,
     add_commerce_to_db,
     add_categories_to_db,
-    get_categories,
+    get_categories_db,
     get_commerce,
     get_goals,
 )
@@ -22,6 +22,18 @@ app = FastAPI()
 @app.get("/")
 def root():
     return {"message": "Hello World"}
+
+
+@app.get("/get-cate")
+def get_cate():
+    """
+    Endpoint to get all categories.
+    """
+
+    # Get categories from the database
+    categories = get_categories_db()
+    print("Categories:", categories)
+    return {"categories": categories}
 
 
 @app.post("/read-csv")
@@ -157,17 +169,17 @@ async def create_goal(
     return await add_goal(goal_type, goal, goal_text, affected_site, AI)
 
 
-@app.get("/get-categories")
-async def get_categories():
+@app.get("/get-cate")
+async def get_cate():
     """
     Endpoint to get all categories.
     """
-    try:
-        # Get categories from the database
-        categories = get_categories()
-        return {"categories": categories}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+
+    # Get categories from the database
+    categories = get_categories_db()
+
+    print("Categories:", await categories)
+    return {"categories": categories}
 
 
 @app.get("/get-commerce")

@@ -42,7 +42,7 @@ export default function IndexPage() {
             <Grid.Col span={{ base: 12, md: 6 }}>
               <Image
                 radius="md"
-                src="demo.png"
+                src="https://placehold.co/600x400/5580EB/FFFFFF?text=Missions+Dashboard"
                 alt="Revault App Dashboard"
               />
             </Grid.Col>
@@ -123,7 +123,7 @@ export default function IndexPage() {
               </Accordion.Control>
               <Accordion.Panel>
                 <Text>
-                  Yes—you'll pause your mission streak without losing your accumulated XP. We understand life happens,
+                  Yes—youll pause your mission streak without losing your accumulated XP. We understand life happens,
                   and sometimes you need flexibility.
                 </Text>
               </Accordion.Panel>
