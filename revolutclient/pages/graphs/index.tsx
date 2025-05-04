@@ -1,4 +1,4 @@
-import { Anchor, AppShell, Burger, Button, Checkbox, Container, Group, Highlight, NavLink, Paper, Stack, Text, Title } from "@mantine/core";
+import { Anchor, AppShell, Burger, Button, Checkbox, Container, Flex, Group, Highlight, Image, NavLink, Paper, Stack, Text, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavBar from "../../components/NavBar";
 import { AreaChart, LineChart } from "@mantine/charts";
@@ -440,8 +440,11 @@ export default function IndexPage() {
     header={{height: 60, }}
     navbar={{width: 300, breakpoint: 'sm', collapsed: { mobile: !opened}}}>
 
-<AppShell.Header bg="#00000" color="black">
-        <Title variant="gradient" order={1} fw={900} p={10}>Graphs</Title>
+      <AppShell.Header m={10} ml={25}>
+        <Flex columnGap={20}>
+          <Image src={"/logo.svg"} w={40}/>
+          <Title>Graphs</Title>
+        </Flex>
       </AppShell.Header>
         <NavBar/>
       <AppShell.Main p="md">

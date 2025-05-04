@@ -1,4 +1,4 @@
-import { Anchor, AppShell, Badge, Burger, Button, Card, Group, NavLink, SimpleGrid, Text, Title } from "@mantine/core";
+import { Anchor, AppShell, Badge, Burger, Button, Card, Flex, Group, Image, NavLink, SimpleGrid, Text, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavBar from "../components/NavBar";
 
@@ -81,14 +81,11 @@ export default function IndexPage() {
     header={{height: 60, }}
     navbar={{width: 300, breakpoint: 'sm', collapsed: { mobile: !opened}}}>
 
-<AppShell.Header>
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          hiddenFrom="sm"
-          size="sm"
-        />
-        <div>Logo</div>
+      <AppShell.Header m={10} ml={25}>
+        <Flex columnGap={20}>
+          <Image src={"/logo.svg"} w={40}/>
+          <Title>Rewards</Title>
+        </Flex>
       </AppShell.Header>
 
            <NavBar/>
