@@ -19,6 +19,7 @@ import {
   CreditCardIcon,
   DollarSignIcon,
   UploadIcon,
+  Goal,
 } from "lucide-react";
 
 import {
@@ -27,7 +28,6 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CalendarIcon,
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -769,13 +769,13 @@ export default function Dashboard() {
 
           <Card className="col-span-1">
             <CardHeader>
-              <CardTitle>Monthly Calendar</CardTitle>
-              <CardDescription>Spending activity by date</CardDescription>
+              <CardTitle>Goals</CardTitle>
+              <CardDescription>How to improve your spending</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-center h-[200px]">
                 <div className="text-center">
-                  <CalendarIcon className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
+                  <Goal className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
                   <p className="text-sm text-muted-foreground">
                     Calendar view coming soon
                   </p>
