@@ -37,7 +37,8 @@
 
         input[type="file"],
         input[type="month"],
-        input[type="number"] {
+        input[type="number"],
+        input[type="date"] {
             margin-bottom: 15px;
         }
 
@@ -56,19 +57,19 @@
     </style>
 </head>
 
-<body>gen-goal
-    <form action="http://localhost:8081/read-csv" method="post" enctype="multipart/form-data">
-        <h1>Subir un archivo CSV</h1>
-        <label for="csv">Selecciona un archivo CSV:</label>
-        <input type="file" id="csv" name="csv" accept=".csv" required>
+<body>
+    <form action="http://localhost:8081/create-goal" method="post" enctype="multipart/form-data">
 
-        <label for="month">Selecciona un mes:</label>
-        <input type="month" id="month" name="month" required>
+        Tipo <input type="number" name="type" required> <br>
+        goal <input type="text" name="goal" required> <br>
+        descripción <input type="text" name="goal_text" required> <br>
 
-        <label for="year">Selecciona un año:</label>
-        <input type="number" id="year" name="year" min="1900" max="2100" required>
+        <input type="checkbox" required hidden>
 
         <button type="submit">Enviar</button>
+
+        <!--Submit-->
+
     </form>
 </body>
 

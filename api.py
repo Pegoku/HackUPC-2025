@@ -97,6 +97,7 @@ async def read_csv(
     }
 
 
+# With gemini generates the goals
 @app.post("/gen-goals")
 async def gen_goals_api(csv: UploadFile):
     try:
@@ -109,7 +110,7 @@ async def gen_goals_api(csv: UploadFile):
         async with httpx.AsyncClient() as client:
             for goal in goals:
                 response = await client.post(
-                    "http://localhost:8000/create-goal",  # Assuming the server is running locally
+                    "http://localhost:8081/create-goal",  # Assuming the server is running locally
                     json=goal,
                 )
                 if response.status_code != 200:
@@ -122,22 +123,6 @@ async def gen_goals_api(csv: UploadFile):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.get("/info-goals")
-def get_create_goal_form():
-    """
-    Endpoint to provide information for rendering graphics and business info.
-    """
-    graphics_data = {
-        # TBD
-    }
-
-    business_info = {
-        # TBD
-    }
-
-    return {"graphics": graphics_data, "business_info": business_info}
 
 
 @app.post("/create-goal")
