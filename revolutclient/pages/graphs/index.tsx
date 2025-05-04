@@ -5,9 +5,9 @@ import { AreaChart, LineChart } from "@mantine/charts";
 import '@mantine/charts/styles.css';
 import { BarChart } from "recharts";
 import { useState } from "react";
-import { MonthlyExpensesChart } from "./monthlyExpensesChart";
-import { CategoriesComparasionExpenses } from "./CategoriesComparasionExpenses";
-import { CategoriesDonutChart } from "./CategoriesDonutChart";
+import { MonthlyExpensesChart } from "../../components/graphs/monthlyExpensesChart";
+import { CategoriesComparasionExpenses } from "../../components/graphs/CategoriesComparasionExpenses";
+import { CategoriesDonutChart } from "../../components/graphs/CategoriesDonutChart";
 
 export     const categoryColors: Record<category, string> = {
       'Groceries': 'blue.6',

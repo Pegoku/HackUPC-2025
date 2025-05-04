@@ -21,7 +21,6 @@ export default function IndexPage() {
       <NavBar/>
       
       <AppShell.Main>
-        {/* Hero Section */}
         <Container size="lg" py={60}>
           <Grid gutter={50}>
             <Grid.Col span={{ base: 12, md: 6 }}>
@@ -42,7 +41,7 @@ export default function IndexPage() {
             <Grid.Col span={{ base: 12, md: 6 }}>
               <Image
                 radius="md"
-                src="https://placehold.co/600x400/5580EB/FFFFFF?text=Missions+Dashboard"
+                src="demo.png"
                 alt="Revault App Dashboard"
               />
             </Grid.Col>
@@ -88,7 +87,6 @@ export default function IndexPage() {
           </SimpleGrid>
         </Container>
 
-        {/* FAQ Section */}
         <Container size="lg" py={40}>
           <Title order={2} ta="center" mb={30}>Frequently Asked Questions</Title>
           
@@ -143,7 +141,6 @@ export default function IndexPage() {
           </Accordion>
         </Container>
 
-        {/* Call to Action */}
         <Container size="md" py={60}>
           <Paper shadow="xl" p={40} radius="lg" withBorder ta="center">
             <Title order={2} mb="md">Ready to level up your finances?</Title>

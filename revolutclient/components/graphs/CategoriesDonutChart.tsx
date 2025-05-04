@@ -1,5 +1,5 @@
 import { Box, Checkbox, Collapse, Flex, Group, NumberInput, Paper, Pill, Radio, Title } from "@mantine/core";
-import { categories, category, categoryColors, transaction } from ".";
+import { categories, category, categoryColors, transaction } from "../../pages/graphs";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { BarChart, DonutChart } from "@mantine/charts";

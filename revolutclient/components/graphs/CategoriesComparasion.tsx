@@ -1,13 +1,22 @@
-import { Checkbox, Collapse, Flex, Group, NumberInput, Paper, Title } from "@mantine/core";
-import { LineChart } from "@mantine/charts";
-import { categories, category, categoryColors, transaction } from ".";
+import { Box, Checkbox, Collapse, Flex, Group, NumberInput, Paper, Pill, Radio, Title } from "@mantine/core";
+import { categories, category, transaction } from "../../pages/graphs";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
+import { BarChart } from "@mantine/charts";
 
+interface Category {
+    id: number;
+    category: string;
+    necessary: number;
+    frequency: number;
+    avg_amount: number;
+    total_amount: number;
+    month: number;
+    year: number;
+}
 
 const allMonths = Array(12).keys();
-export function MonthlyExpensesChart({data}: {data:transaction[]}) {
-    const [enabledCategories, setEnabledCategories] = useState<category[]>(categories.slice(0, 5));
+export function CategoriesComparasion({data}: {data:transaction[]}) {
     const [maxSelectable, setMaxSelectable] = useState<null|number>(5);
     const [isCollapsed, {toggle}] = useDisclosure(true);
       const expensePerMonth = new Map<string, transaction[]>();
@@ -50,7 +59,22 @@ export function MonthlyExpensesChart({data}: {data:transaction[]}) {
         1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
         7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
     };
-
+    const categoryColors: Record<category, string> = {
+      'Groceries': 'blue.6',
+      'Dining': 'red.6',
+      'Transport': 'orange.6',
+      'Shopping': 'grape.6',
+      'Clothing': 'yellow.6',
+      'Utilities': 'lime.6',
+      'Health': 'cyan.6',
+      'Entertainment': 'pink.6',
+      'Travel': 'teal.6',
+      'Home': 'indigo.6',
+      'Betting': 'gray.5', 
+      'Education': 'green.6',
+      'Luxuries': 'violet.6',
+      'Investment': 'dark.5',
+    };
     const dOchartData = () => {
         const monthOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         
@@ -86,7 +110,7 @@ export function MonthlyExpensesChart({data}: {data:transaction[]}) {
     const chartData = dOchartData();
     
     const chartSeries = categories
-        .filter(cat => chartData.some(monthData => monthData[cat] > 0 && enabledCategories.includes(cat))) // Check if category has > 0 value in any month
+        .filter(cat => chartData.some(monthData => monthData[cat] > 0)) // Check if category has > 0 value in any month
         .map(cat => ({
             name: cat as string,
             color: categoryColors[cat],
@@ -97,66 +121,33 @@ export function MonthlyExpensesChart({data}: {data:transaction[]}) {
             <Paper withBorder shadow="sm" p="md" radius="md" mt="xl" w={1100}>
             <Title order={4} ta="center" mb="lg">Monthly Expenses Breakdown</Title>
             <Flex justify="space-between" align="center" mb="md" gap={40}>
-            <LineChart
+            <BarChart
                 h={450} 
                 data={chartData}
-                curveType="linear" 
                 dataKey="monthLabel" 
                 series={chartSeries as {color:string,name:string}[]}
-                yAxisProps={{ 
-                    tickFormatter: (value: number) => `€${value.toFixed(0)}`, 
-                    
-                }}
-                xAxisProps = {{
-                    padding: { left: 30, right: 30 },
-                }}
+type="stacked"
                 tickLine="y"
                 withXAxis
                 withYAxis
-        />
+        />     
         <Group maw={100} pr={150} >
           {categories.map((cat)=>{
 
             return (
-              <Checkbox 
+              <Flex 
               key={cat}
-              label={cat}
               color={categoryColors[cat]}
-              checked={enabledCategories.includes(cat)}
-              
-              onChange={(event) => {
-                if (event.currentTarget.checked) {
-                  setEnabledCategories((prev) =>{
-                     let a = [...prev, cat]
-                     if (maxSelectable && a.length > maxSelectable) {
-                      a.shift();
-                     }
-                        return a;
-                    });
-                }
-                else {
-                  setEnabledCategories((prev) => prev.filter((c) => c !== cat));
-                }
-              }}
-              />
+              fz={"sm"}
+              gap={5}
+              align={"center"}
+                justify={"center"}
+              ><Box w={12} h={12} bg={categoryColors[cat]}/>{cat}</Flex>
             )
           })}
         </Group>
-
         </Flex>
-        <Collapse in={isCollapsed} transitionDuration={100} transitionTimingFunction={"linear"}>
-        <NumberInput
-      label="Max selectable categories"
-      description="Select the maximum number of categories to display in the chart. Defaults to 5."
-      value={maxSelectable?.toString() || 5}
-      onChange={(v)=> {
-        if (v) {
-          setMaxSelectable(parseInt(v.toString()));
-          setEnabledCategories(enabledCategories.slice(0, parseInt(v.toString())));
-        }
-      }}
-    />
-        </Collapse>
+
         </Paper>
         )
 }
