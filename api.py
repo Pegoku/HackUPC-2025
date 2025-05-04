@@ -39,7 +39,7 @@ async def gen_goals_api(csv: UploadFile):
         async with httpx.AsyncClient() as client:
             for goal in goals:
                 response = await client.post(
-                    "http://localhost:8000/create-goal",  # Assuming the server is running locally
+                    "http://localhost:8081/create-goal",  # Assuming the server is running locally
                     json=goal
                 )
                 if response.status_code != 200:
