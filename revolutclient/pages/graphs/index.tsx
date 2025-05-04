@@ -6,8 +6,25 @@ import '@mantine/charts/styles.css';
 import { BarChart } from "recharts";
 import { useState } from "react";
 import { MonthlyExpensesChart } from "./monthlyExpensesChart";
+import { CategoriesComparasionExpenses } from "./CategoriesComparasionExpenses";
+import { CategoriesDonutChart } from "./CategoriesDonutChart";
 
-
+export     const categoryColors: Record<category, string> = {
+      'Groceries': 'blue.6',
+      'Dining': 'red.6',
+      'Transport': 'orange.6',
+      'Shopping': 'grape.6',
+      'Clothing': 'yellow.6',
+      'Utilities': 'lime.6',
+      'Health': 'cyan.6',
+      'Entertainment': 'pink.6',
+      'Travel': 'teal.6',
+      'Home': 'indigo.6',
+      'Betting': 'gray.5', 
+      'Education': 'green.6',
+      'Luxuries': 'violet.6',
+      'Investment': 'dark.5',
+    };
 export const categories =[ 
 'Groceries'
 ,'Dining'
@@ -423,7 +440,7 @@ export default function IndexPage() {
     header={{height: 60, }}
     navbar={{width: 300, breakpoint: 'sm', collapsed: { mobile: !opened}}}>
 
-<AppShell.Header>
+<AppShell.Header bg="revBlack.9" color="black">
         <Title variant="gradient" order={1} fw={900} p={10}>Graphs</Title>
       </AppShell.Header>
         <NavBar/>
@@ -432,27 +449,30 @@ export default function IndexPage() {
       <Group mt={50} justify="center">
       <Container m={10}>
         <Stack gap={"xl"}>
+          <Paper withBorder shadow="sm" p="md" radius="md" mt="xl">
         <Title>Biggest expense</Title>
         <Highlight
       ta="center"
       highlight={biggestExpense.vendor}
+      color={categoryColors[biggestExpense.category]}
       highlightStyles={{
-        backgroundImage:
-          'linear-gradient(45deg, var(--mantine-color-cyan-5), var(--mantine-color-indigo-5))',
         fontWeight: 700,
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'trcategories={categories} ansparent',
+
         
+        textDecoration: 'underline',
+         
       }}
     >
           {`Your biggest expense through the year has been of ${biggestExpense.amount}€ in ${biggestExpense.vendor}.`}
           </Highlight>
-
+          </Paper>
 
           <Title>Charts</Title>
 
         <MonthlyExpensesChart data={data} />
 
+<CategoriesComparasionExpenses data={data}/>
+<CategoriesDonutChart data={data}/>
         </Stack>
       </Container>
     </Group>

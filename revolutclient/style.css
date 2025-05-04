@@ -1,0 +1,11 @@
+body {
+    background-color: #161618;
+  }
+
+:root {
+
+  
+    @mixin dark-root {
+      --mantine-color-body: #161618;
+    }
+}

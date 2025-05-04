@@ -3,7 +3,8 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "../theme";
 import '@mantine/charts/styles.css';
-
+import "@fontsource/roboto"
+import "../style.css"
 export default function App({ Component, pageProps }: any) {
   return (
     <MantineProvider theme={theme} defaultColorScheme="dark">
