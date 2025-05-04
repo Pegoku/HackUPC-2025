@@ -1,0 +1,13 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cuerpo de la caja fuerte -->
+  <rect x="10" y="10" width="100" height="100" rx="8" ry="8" fill="none" stroke="#FFF" stroke-width="4"/>
+  <!-- Puerta interior -->
+  <rect x="20" y="20" width="80" height="80" rx="6" ry="6" fill="none" stroke="#FFF" stroke-width="2"/>
+  <!-- Cilindro de la cerradura -->
+  <circle cx="60" cy="60" r="10" fill="none" stroke="#FFF" stroke-width="4"/>
+  <!-- Manejar (manivela) -->
+  <line x1="60" y1="50" x2="60" y2="40" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="60" x2="70" y2="60" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="60" x2="50" y2="60" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="60" x2="60" y2="70" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+</svg>
