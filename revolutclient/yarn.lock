@@ -437,6 +437,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/form@npm:^7.17.7":
+  version: 7.17.7
+  resolution: "@mantine/form@npm:7.17.7"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    klona: "npm:^2.0.6"
+  peerDependencies:
+    react: ^18.x || ^19.x
+  checksum: 10c0/2cd533bd4c5a86af97d04b97e51ca9010e42b2950f463747ea7e9a7476909c110fb057e90e64887c5cb6c7c359c926e55b306ce195003b9e938952d0b02aaf0b
+  languageName: node
+  linkType: hard
+
 "@mantine/hooks@npm:7.17.7":
   version: 7.17.7
   resolution: "@mantine/hooks@npm:7.17.7"
@@ -3308,6 +3320,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"klona@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "klona@npm:2.0.6"
+  checksum: 10c0/94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -3375,6 +3394,7 @@ __metadata:
     "@fontsource/roboto": "npm:^5.2.5"
     "@mantine/charts": "npm:^7.17.7"
     "@mantine/core": "npm:7.17.7"
+    "@mantine/form": "npm:^7.17.7"
     "@mantine/hooks": "npm:7.17.7"
     "@tabler/icons-react": "npm:^3.31.0"
     "@types/node": "npm:22.13.11"
