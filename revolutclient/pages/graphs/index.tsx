@@ -440,7 +440,7 @@ export default function IndexPage() {
     header={{height: 60, }}
     navbar={{width: 300, breakpoint: 'sm', collapsed: { mobile: !opened}}}>
 
-<AppShell.Header bg="revBlack.9" color="black">
+<AppShell.Header bg="#00000" color="black">
         <Title variant="gradient" order={1} fw={900} p={10}>Graphs</Title>
       </AppShell.Header>
         <NavBar/>
