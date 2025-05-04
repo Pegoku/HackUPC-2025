@@ -142,3 +142,30 @@ def add_categories_to_db(data, month, year):
         )
     conn.commit()
     conn.close()
+
+
+def get_categories():
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM categories")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
+def get_commerce():
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM commerce")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
+def get_goals():
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM goals")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
