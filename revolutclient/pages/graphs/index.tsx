@@ -1,13 +1,14 @@
-import { Anchor, AppShell, Burger, Button, Checkbox, Container, Group, Highlight, NavLink, Paper, Text, Title } from "@mantine/core";
+import { Anchor, AppShell, Burger, Button, Checkbox, Container, Group, Highlight, NavLink, Paper, Stack, Text, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavBar from "../../components/NavBar";
 import { AreaChart, LineChart } from "@mantine/charts";
 import '@mantine/charts/styles.css';
 import { BarChart } from "recharts";
 import { useState } from "react";
+import { MonthlyExpensesChart } from "./monthlyExpensesChart";
 
 
-const categories =[ 
+export const categories =[ 
 'Groceries'
 ,'Dining'
 ,'Transport'
@@ -24,8 +25,8 @@ const categories =[
 ,'Investment'
 ] as const;
 
-type category = typeof categories[number];
-interface transaction {
+export type category = typeof categories[number];
+export interface transaction {
   year: number;
   month: number;
   vendor: string;
@@ -36,7 +37,6 @@ export default function IndexPage() {
   const [opened, { toggle }] = useDisclosure();
 
 
-  const [enabledCategories, setEnabledCategories] = useState<category[]>([...categories]);
 
 
   const data: transaction[] = [
@@ -255,87 +255,168 @@ export default function IndexPage() {
       "vendor": "Taller AutoFix",
       "category": "Home",
       "amount": 91.20
-    }
+    },{
+      "year": 2024,
+      "month": 5,
+      "vendor": "Carrefour",
+      "category": "Groceries",
+      "amount": 82.30
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Restaurante La Casa",
+      "category": "Dining",
+      "amount": 55.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Renfe",
+      "category": "Transport",
+      "amount": 45.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Zara",
+      "category": "Shopping",
+      "amount": 70.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Nike",
+      "category": "Clothing",
+      "amount": 85.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Iberdrola",
+      "category": "Utilities",
+      "amount": 60.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Clinica Dental",
+      "category": "Health",
+      "amount": 50.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Cinepolis",
+      "category": "Entertainment",
+      "amount": 30.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Vueling",
+      "category": "Travel",
+      "amount": 200.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Bricorama",
+      "category": "Home",
+      "amount": 45.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Louis Vuitton",
+      "category": "Luxuries",
+      "amount": 300.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Khan Academy",
+      "category": "Education",
+      "amount": 0.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Decathlon",
+      "category": "Shopping",
+      "amount": 60.00
+  },
+  {
+      "year": 2024,
+      "month": 5,
+      "vendor": "Correos",
+      "category": "Home",
+      "amount": 12.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Supermercado Lidl",
+      "category": "Groceries",
+      "amount": 55.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Bar El Tapeo",
+      "category": "Dining",
+      "amount": 40.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Taxi Madrid",
+      "category": "Transport",
+      "amount": 25.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "El Corte Inglés",
+      "category": "Shopping",
+      "amount": 95.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Adidas",
+      "category": "Clothing",
+      "amount": 70.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Gas Natural",
+      "category": "Utilities",
+      "amount": 55.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "Hospital Universitario",
+      "category": "Health",
+      "amount": 120.00
+  },
+  {
+      "year": 2024,
+      "month": 6,
+      "vendor": "HBO Max",
+      "category": "Entertainment",
+      "amount": 14.99
+  }
   ]
 
-  const expensePerMonth = new Map<string, transaction[]>();
-  
-  data.forEach((item)=>{
-
-    const key = item.year + "-" + item.month;
-    if (expensePerMonth.has(key)) {
-      expensePerMonth.get(key)!.push(item);
-    } else {
-      expensePerMonth.set(key, [item]);
-    }
-  })
-
-  type expensePerMonthPerCategory = {
-    [key in category | 'total' | 'month']: number;
-  } 
-  const totalExpensePerMonth: expensePerMonthPerCategory[] = [];
 
   const biggestExpense = data.reduce((prev, current) => {
     return (prev.amount > current.amount) ? prev : current
   });
 
   
-  expensePerMonth.forEach((value, key) => {
-    const month = key.split("-")[1];
-    const year = key.split("-")[0];
-    const total = value.reduce((acc, curr) => acc + curr.amount, 0);
-    const expensePerCategory: expensePerMonthPerCategory = {
-      month: parseInt(month),
-      total: total,
-      ...(categories.reduce((acc, curr) => {
-        acc[curr] = 0;
-        return acc;
-      }, {} as { [key in category]: number })),
-    }
-    
-    value.forEach((item) => {
-      expensePerCategory[item.category] += item.amount;
-    })
-    totalExpensePerMonth.push(expensePerCategory);
-  })
-  const monthNames: { [key: number]: string } = {
-    1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
-    7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
-};
-const categoryColors: Record<category, string> = {
-  'Groceries': 'blue.6',
-  'Dining': 'red.6',
-  'Transport': 'orange.6',
-  'Shopping': 'grape.6',
-  'Clothing': 'yellow.6',
-  'Utilities': 'lime.6',
-  'Health': 'cyan.6',
-  'Entertainment': 'pink.6',
-  'Travel': 'teal.6',
-  'Home': 'indigo.6',
-  'Betting': 'gray.5', // Assign colors even if current data is 0
-  'Education': 'green.6',
-  'Luxuries': 'violet.6',
-  'Investment': 'dark.5',
-};
-const chartData = totalExpensePerMonth
-    .map(item => ({
-        ...item,
-        monthLabel: monthNames[item.month]
-    }))
-    .sort((a, b) => {
-        const monthOrder = [11, 12, 1, 2];
-        return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
-    });
-
-const chartSeries = categories
-    .filter(cat => chartData.some(monthData => monthData[cat] > 0 && enabledCategories.includes(cat))) // Check if category has > 0 value in any month
-    .map(cat => ({
-        name: cat as string,
-        color: categoryColors[cat],
-    }));
-
-
 
   return (
     <AppShell
@@ -349,7 +430,8 @@ const chartSeries = categories
       <AppShell.Main p="md">
 
       <Group mt={50} justify="center">
-      <Container m={10}  >
+      <Container m={10}>
+        <Stack gap={"xl"}>
         <Title>Biggest expense</Title>
         <Highlight
       ta="center"
@@ -359,58 +441,19 @@ const chartSeries = categories
           'linear-gradient(45deg, var(--mantine-color-cyan-5), var(--mantine-color-indigo-5))',
         fontWeight: 700,
         WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        WebkitTextFillColor: 'trcategories={categories} ansparent',
         
       }}
     >
           {`Your biggest expense through the year has been of ${biggestExpense.amount}€ in ${biggestExpense.vendor}.`}
           </Highlight>
-{JSON.stringify(totalExpensePerMonth, null, 2)}
 
 
-<Paper withBorder shadow="sm" p="md" radius="md" mt="xl">
-            <Title order={4} ta="center" mb="lg">Monthly Expenses Breakdown</Title>
-            <LineChart
-                h={450} // Adjust height as needed
-                data={chartData}
-                dataKey="monthLabel" // Use the month name for the x-axis
-                series={chartSeries as {color:string,name:string}[]}
-                yAxisProps={{ // Format y-axis labels as currency
-                    tickFormatter: (value: number) => `€${value.toFixed(0)}`, // Format as Euro, adjust precision
-                    // You might want to set a domain if needed: domain={[0, 'auto']} or specific max
-                }}
-                xAxisProps = {{ // Add some padding to the x-axis
-                    padding: { left: 30, right: 30 },
-                }}
-                tickLine="y" // Show tick lines on the y-axis
-                withXAxis
-                withYAxis
-        />
-        <Group>
-          {categories.map((cat)=>{
+          <Title>Charts</Title>
 
-            return (
-              <Checkbox 
-              key={cat}
-              label={cat}
-              color={categoryColors[cat]}
-              checked={enabledCategories.includes(cat)}
-              onChange={(event) => {
-                if (event.currentTarget.checked) {
-                  setEnabledCategories((prev) => [...prev, cat]);
-                }
-                else {
-                  setEnabledCategories((prev) => prev.filter((c) => c !== cat));
-                }
-              }}
-              />
-            )
-          })}
-        </Group>
-        </Paper>
-        
+        <MonthlyExpensesChart data={data} />
 
-
+        </Stack>
       </Container>
     </Group>
       </AppShell.Main>
