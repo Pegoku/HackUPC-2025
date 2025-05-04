@@ -58,17 +58,14 @@
 </head>
 
 <body>
-    <form action="http://localhost:8081/create-goal" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:8081/gen-goals" method="post" enctype="multipart/form-data">
 
-        Tipo <input type="number" name="goal_type" required> <br>
-        goal <input type="text" name="goal" required> <br>
-        descripción <input type="text" name="goal_text" required> <br>
+        <input type="number" name="month" placeholder="month" required>
+        <input type="number" name="year" placeholder="year" required>
 
-        Hola<input type="text" name="affected_site" required> <br>
+        <input type="submit" value="Submit" name="submit">
 
-        sdf <input type="text" name="AI" required>
 
-        <button type="submit" value="false">Enviar</button>
 
         <!--Submit-->
 

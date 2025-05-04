@@ -1,10 +1,17 @@
 from fastapi import FastAPI, UploadFile, Request, File, Form
 from utils.gemini import extract_response, gen_goals
 from utils.csv_functions import parseCSV
-from utils.db import insert_goal, add_commerce_to_db, add_categories_to_db
+from utils.add_goal import add_goal
+from utils.db import (
+    insert_goal,
+    add_commerce_to_db,
+    add_categories_to_db,
+    get_categories,
+    get_commerce,
+    get_goals,
+)
 from utils.get_statistics_csv import get_stats
 
-import random
 import json
 import httpx
 import pandas as pd
@@ -99,67 +106,78 @@ async def read_csv(
 
 # With gemini generates the goals
 @app.post("/gen-goals")
-async def gen_goals_api(csv: UploadFile):
+async def gen_goals_api(year: int = Form(...), month: int = Form(...)):
+    # Process the CSV file using Gemini
+    print("Gemini call API running")
+    goals = gen_goals(month, year)  # Generate goals
+
+    print("Gemini call API finished")
+
+    limpio = [
+        {
+            **g,  # mantenemos todos los campos originales
+            "goal_type": int(g["goal_type"]),
+            "goal": int(g["goal"]),
+            "IA": False,  # nuevo campo fijo
+        }
+        for g in goals
+    ]
+
+    await add_goal(
+        limpio[0]["goal_type"],
+        limpio[0]["goal"],
+        limpio[0]["goal_text"],
+        limpio[0]["affected_site"],
+        limpio[0]["IA"],
+    )
+
+    return {"message": "Goals created successfully", "goals": limpio}
+
+
+@app.post("/create-goal")
+async def create_goal(
+    goal_type: int = Form(...),
+    goal: str = Form(...),
+    goal_text: str = Form(...),
+    affected_site: str = Form(...),
+    AI: str = Form(...),
+):
+    """
+    Endpoint to create a new goal.
+    """
+
+    # print all the data get from the request
+    print("goal_type:", goal_type)
+    print("goal:", goal)
+
+    print("goal_text:", goal_text)
+    print("affected_site:", affected_site)
+    print("AI:", AI)
+
+    return await add_goal(goal_type, goal, goal_text, affected_site, AI)
+
+
+@app.get("/get-categories")
+async def get_categories():
+    """
+    Endpoint to get all categories.
+    """
     try:
-        # Process the CSV file using Gemini
-        print("Processing CSV file with Gemini...")
-        goals_json = gen_goals(csv)  # Generate goals
-        goals = json.loads(goals_json)  # Parse the JSON string into a Python list
-
-        # Call /create-goal for each goal
-        async with httpx.AsyncClient() as client:
-            for goal in goals:
-                response = await client.post(
-                    "http://localhost:8081/create-goal",  # Assuming the server is running locally
-                    json=goal,
-                )
-                if response.status_code != 200:
-                    raise HTTPException(
-                        status_code=response.status_code,
-                        detail=f"Failed to create goal: {response.text}",
-                    )
-
-        return {"message": "Goals created successfully", "goals": goals}
-
+        # Get categories from the database
+        categories = get_categories()
+        return {"categories": categories}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.post("/create-goal")
-async def create_goal(request: Request):
+@app.get("/get-commerce")
+async def get_commerces():
     """
-    Endpoint to create a new goal.
+    Endpoint to get all commerce.
     """
     try:
-        # Parse JSON
-        data = await request.json()
-
-        # Extract fields
-        goal_type = data.get("goal_type")
-        goal = data.get("goal")
-        goal_text = data.get("goal_text")
-        affected_site = data.get("affected_site")  # List
-        AI = data.get("AI")
-
-        # Validate fields
-        if (
-            goal_type is None
-            or goal is None
-            or not goal_text
-            or not affected_site
-            or AI is None
-        ):
-            raise HTTPException(status_code=400, detail="Missing required fields")
-
-        if not isinstance(affected_site, list):
-            raise HTTPException(status_code=400, detail="affected_site must be a list")
-
-        # Insert into db
-        insert_goal(goal_type, goal, goal_text, affected_site, AI)
-
-        return {"message": "Goal created successfully"}
-
-    except HTTPException as e:
-        raise e
+        # Get commerce from the database
+        commerce = get_commerce()
+        return {"commerce": commerce}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

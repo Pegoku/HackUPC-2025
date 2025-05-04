@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS goals (
     goal_type INTEGER NOT NULL,
     goal INTEGER NOT NULL,
     goal_text TEXT NOT NULL,
-    affected_site TEXT NOT NULL, -- JSON-encoded list
+    affected_site TEXT NOT NULL,
     AI BOOLEAN NOT NULL
 )
 """
@@ -166,6 +166,31 @@ def get_goals():
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM goals")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
+# Gets all the commerce data for a specific month and year as a csv string
+def get_commerce_csv(month, year):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM commerce WHERE month = ? AND year = ?", (month, year))
+    rows = cursor.fetchall()
+    conn.close()
+
+    # Convert to CSV format
+    csv_data = "commerce,necessity,frequency,category,avg_amount,total_amount\n"
+    for row in rows:
+        csv_data += ",".join(map(str, row[1:])) + "\n"
+
+    return csv_data
+
+
+def get_commerce_by_month_year(month, year):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM commerce WHERE month = ? AND year = ?", (month, year))
     rows = cursor.fetchall()
     conn.close()
     return rows

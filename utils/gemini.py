@@ -4,7 +4,9 @@ import os
 import pathlib
 from dotenv import load_dotenv
 import pandas as pd
-
+from utils.db import get_commerce_csv
+import csv
+from io import StringIO
 
 
 def extract_response(file):
@@ -33,28 +35,37 @@ def extract_response(file):
     return response
 
 
-
-def gen_goals(file):
+def gen_goals(month, year):
     load_dotenv()
-    api_key_env = os.getenv('api_key')
+    api_key_env = os.getenv("api_key")
 
     client = genai.Client(api_key=api_key_env)
 
     # filepath = pathlib.Path(filepath)
-    prompt = "You recieved a CSV from Revolut. It has multiple transactions, want you to create 3 goals for the user. They should be: reduce the number of transactions of a site; Reduce the maximun transaction amount in one go; Reduce the total amount spent in the same site/brand in the full month. Each of those should only affect 1 site **SHOULD ONLY OUTPUT THE GOALS IN JSON FORMAT, NO MORE TEXT**. **AI SHOULD BE true**. Example: # insert_goal( goal_type=0, goal=20, goal_text='Reduce Uber Rides to 20 per month', affected_site=['Uber'], AI=False"
+    prompt = "You receive a CSV file of a user’s Revolut transactions for one month, where each row contains category, necessity, frequency, avg_amount and total_amount; generate exactly three money-saving challenges applicable to all users; for each challenge output four columns—affected_site (the commerce to avoid purchasing), goal_type (0=reduce frequency, 1=reduce total monthly spend, 2=cap average spend), goal (the numeric x target), and goal_text (description and justification of the goal); return exactly three CSV rows; ONLY OUTPUT THE CSV, WITH NO ADDITIONAL TEXT."
+    print(month, year)
+    le = get_commerce_csv(month, year)
+    print(le)
 
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=[
             types.Part.from_bytes(
-              data=file.file.read(),
-              mime_type='text/csv',
+                data=le.encode("utf-8"),
+                mime_type="text/csv",
             ),
-            prompt],
+            prompt,
+        ],
         # config=types.GenerateContentConfig(
         #     temperature=0,
         #     top_k=1,
         #     top_p=0
         # )
-        )
-    return response.text.replace('\n', '').strip('```json').strip('```')
+    )
+    csv_string = response.text.strip("```json").strip("```")
+
+    reader = csv.DictReader(StringIO(csv_string))
+
+    lista_de_dicts = list(reader)
+
+    return lista_de_dicts
