@@ -35,7 +35,9 @@
             font-weight: bold;
         }
 
-        input[type="file"] {
+        input[type="file"],
+        input[type="month"],
+        input[type="number"] {
             margin-bottom: 15px;
         }
 
@@ -55,10 +57,17 @@
 </head>
 
 <body>
-    <form action="http://localhost:8081/read-csv" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:3001/read-csv" method="post" enctype="multipart/form-data">
         <h1>Subir un archivo CSV</h1>
         <label for="csv">Selecciona un archivo CSV:</label>
         <input type="file" id="csv" name="csv" accept=".csv" required>
+
+        <label for="month">Selecciona un mes:</label>
+        <input type="month" id="month" name="month" required>
+
+        <label for="year">Selecciona un año:</label>
+        <input type="number" id="year" name="year" min="1900" max="2100" required>
+
         <button type="submit">Enviar</button>
     </form>
 </body>

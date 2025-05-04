@@ -1,7 +1,7 @@
-from fastapi import FastAPI, UploadFile, Request, HTTPException
+from fastapi import FastAPI, UploadFile, Request, File, Form
 from utils.gemini import extract_response, gen_goals
 from utils.csv_functions import parseCSV
-from utils.db import insert_goal
+from utils.db import insert_goal, add_commerce_to_db
 from utils.get_statistics_csv import get_stats
 
 import random
@@ -18,7 +18,11 @@ def root():
 
 
 @app.post("/read-csv")
-async def read_csv(csv: UploadFile):
+async def read_csv(
+    csv: UploadFile = File(...),
+    month: int = Form(...),
+    year: int = Form(...),
+):
 
     csv_text = csv.file.read()
 
@@ -50,8 +54,14 @@ async def read_csv(csv: UploadFile):
     )
     commerce_necesity_df = commerce_necesity_df.fillna(0)
 
-    print("Stats DataFrame:")
-    print(commerce_necesity_df)
+    comercios_list_dict = commerce_necesity_df.to_dict(orient="records")
+
+    # Add to database
+    add_commerce_to_db(
+        comercios_list_dict,
+        month,
+        year,
+    )
 
     # Devuelve una lista de diccionarios del DataFrame
     return {
