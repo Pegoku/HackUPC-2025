@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, Request, File, Form
 from utils.gemini import extract_response, gen_goals
 from utils.csv_functions import parseCSV
-from utils.db import insert_goal, add_commerce_to_db
+from utils.db import insert_goal, add_commerce_to_db, add_categories_to_db
 from utils.get_statistics_csv import get_stats
 
 import random
@@ -59,6 +59,34 @@ async def read_csv(
     # Add to database
     add_commerce_to_db(
         comercios_list_dict,
+        month,
+        year,
+    )
+
+    commerce_necesity_df = commerce_necesity_df.fillna(0)
+
+    commerce_necesity_df["necessity"] = pd.to_numeric(
+        commerce_necesity_df["necessity"], errors="coerce"
+    ).fillna(0)
+    commerce_necesity_df["avg_amount"] = pd.to_numeric(
+        commerce_necesity_df["avg_amount"], errors="coerce"
+    ).fillna(0)
+
+    # Group by category and calculate the necessity
+    categories_df = (
+        commerce_necesity_df.groupby("category")
+        .agg(
+            necessity=("necessity", "mean"),
+            frequency=("frequency", "sum"),
+            avg_amount=("avg_amount", "mean"),
+            total_amount=("total_amount", "sum"),
+        )
+        .reset_index()
+    )
+    categories_df = categories_df.fillna(0)
+
+    add_categories_to_db(
+        categories_df.to_dict(orient="records"),
         month,
         year,
     )

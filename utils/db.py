@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS goals (
 """
 )
 
+# Commerce
 cursor.execute(
     """
 CREATE TABLE IF NOT EXISTS commerce (
@@ -45,6 +46,23 @@ CREATE TABLE IF NOT EXISTS commerce (
 )
 """
 )
+
+# Categories
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS categories (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT NOT NULL,
+        necessity REAL NOT NULL,
+        frequency INTEGER NOT NULL,
+        avg_amount REAL NOT NULL,
+        total_amount REAL NOT NULL,
+        month INTEGER NOT NULL,
+        year INTEGER NOT NULL
+    )
+"""
+)
+
 
 conn.commit()
 # cursor.execute("SELECT * FROM goals")
@@ -93,6 +111,29 @@ def add_commerce_to_db(data, month, year):
                 row["necessity"],
                 row["frequency"],
                 row["category"],
+                row["avg_amount"],
+                row["total_amount"],
+                month,
+                year,
+            ),
+        )
+    conn.commit()
+    conn.close()
+
+
+def add_categories_to_db(data, month, year):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    for row in data:
+        cursor.execute(
+            """
+        INSERT INTO categories (category, necessity, frequency, avg_amount, total_amount, month, year)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """,
+            (
+                row["category"],
+                row["necessity"],
+                row["frequency"],
                 row["avg_amount"],
                 row["total_amount"],
                 month,
